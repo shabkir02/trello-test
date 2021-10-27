@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 
 import s from './todo-card-footer.module.sass';
 
@@ -10,7 +10,7 @@ interface ITodoCardFooter {
 export const TodoCardFooter = ({ cardIndex,  addNewTodoItem }: ITodoCardFooter) => {
     const [textareaContent, setTextareaContent] = useState<string>('');
 
-    const submitAddTodoItem = (e: any) => {
+    const submitAddTodoItem = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         addNewTodoItem(textareaContent, cardIndex)
         setTextareaContent('')

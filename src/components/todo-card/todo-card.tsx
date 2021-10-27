@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useDrop } from 'react-dnd';
 
 import { TCardItem, TTodoItem } from '../../services/types';
@@ -18,7 +17,18 @@ interface ITodoCard {
     moveTodoItemToAnotherBox: (dragCardIndex: number, dropCardIndex: number, todoItem: TTodoItem) => void
 }
 
-export const TodoCard = ({ cardInfo, cardIndex, addNewTodoItem, deleteTodoItem, editTodoItem, deleteCardItem, moveTodoItemInCard, moveTodoItemToAnotherBox }: ITodoCard) => {
+export const TodoCard = ( props: ITodoCard) => {
+    const {
+        cardInfo, 
+        cardIndex, 
+        addNewTodoItem, 
+        deleteTodoItem, 
+        editTodoItem, 
+        deleteCardItem, 
+        moveTodoItemInCard, 
+        moveTodoItemToAnotherBox
+    } = props;
+
     const [{ isHover }, dropRef] = useDrop({
         accept: 'todoItem',
         drop(item: { index: number; cardIndex: number; todoItem: TTodoItem } ) {

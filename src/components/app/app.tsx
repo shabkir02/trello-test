@@ -69,7 +69,11 @@ export const App = () => {
 		}
 		const newCard = {
 			...data[cardIndex],
-			content: [...data[cardIndex].content.slice(0, todoItemIndex), newTodoItem, ...data[cardIndex].content.slice(todoItemIndex + 1)]
+			content: [
+				...data[cardIndex].content.slice(0, todoItemIndex), 
+				newTodoItem, 
+				...data[cardIndex].content.slice(todoItemIndex + 1)
+			]
 		}
 
 		setData([...data.slice(0, cardIndex), newCard, ...data.slice(cardIndex + 1)]);
@@ -133,6 +137,7 @@ export const App = () => {
 			<div className={s.app}>
 				{data && data.map((card, cardIndex) => (
 					<TodoCard 
+						key={card.id}
 						cardInfo={card}
 						cardIndex={cardIndex}
 						addNewTodoItem={addNewTodoItem}
@@ -141,12 +146,10 @@ export const App = () => {
 						deleteCardItem={deleteCardItem}
 						moveTodoItemInCard={moveTodoItemInCard}
 						moveTodoItemToAnotherBox={moveTodoItemToAnotherBox}
-						key={card.id}
 					/>
 				))}
-				<AddCardField 
-					addNewCardItem={addNewCardItem}
-				/>
+
+				<AddCardField addNewCardItem={addNewCardItem} />
 			</div>
 		</DndProvider>
   	);
