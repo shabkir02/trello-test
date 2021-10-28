@@ -21,9 +21,6 @@ export const TodoItem = ({ todoItem, deleteTodoItem, editTodoItem, index, moveTo
 
     const [, drop] = useDrop({
         accept: 'todoItem',
-        collect: monitor => ({
-            isHover: monitor.isOver()
-        }),
         hover(item: { index: number; cardIndex: number; todoItem: TTodoItem }, monitor) {
             if (!todoItemRef.current) {
                 return;

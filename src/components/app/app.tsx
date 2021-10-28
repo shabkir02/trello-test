@@ -135,7 +135,7 @@ export const App = () => {
   	return (
 		<DndProvider backend={HTML5Backend}>
 			<div className={s.app}>
-				{data && data.map((card, cardIndex) => (
+				{data.map((card, cardIndex) => (
 					<TodoCard 
 						key={card.id}
 						cardInfo={card}
